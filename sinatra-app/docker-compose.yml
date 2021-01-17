@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    #volumes:
+    #  - ./tmp/db:/var/lib/postgresql/data2
+    environment:
+      POSTGRES_USER: active_support
+      POSTGRES_PASSWORD: mypw1234
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    #volumes:
+    #  - .:/code
+    ports:
+      - "4567:4567"
+    depends_on:
+      - db
